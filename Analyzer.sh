@@ -37,9 +37,8 @@ log_message() {
 }
 
 check_root() {
-    # 1.1 Check if user is root
     if [ "$EUID" -ne 0 ]; then
-        echo -e "${RED}${BOLD}Error: This script must be run as root!${RESET}"
+        echo -e "${RED}${BOLD}Error: This script must be run as root! Exiting...${RESET}"
         exit 1
     fi
 }
@@ -211,5 +210,6 @@ start_analysis() {
 # ==========================
 # Main Script Logic
 # ==========================
+check_root
 show_banner
 show_menu
